@@ -35,7 +35,8 @@
             <td>{{ member.lastname }}</td>
             <td>{{member.address}}</td>
             {% comment %} <form method="POST" onsubmit="return confirm("Are you sure you want to delete the record..!")"> {% endcomment %}
-            <td><center> <a class="btn btn-sm btn-danger" href="delete/{{ member.id }}">
+            <td><center> <a class="btn btn-sm btn-danger" 
+                 href="delete/{{ member.id }}">
                     <span class="glyphicon glyphicon-trash"></span>Delete</a></center></td>
                 
                 {% comment %} Edit buttom  {% endcomment %}

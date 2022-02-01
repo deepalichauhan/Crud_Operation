@@ -4,6 +4,9 @@ from curses import KEY_MESSAGE
 from django.shortcuts import render, redirect
 from .models import Member
 from django.contrib import messages
+from tkinter import *
+from tkinter import messagebox
+import time
 
 # Create your views here.
 
@@ -34,13 +37,18 @@ def update(request, id):
     return redirect('/crud/')
 
 
+
 def delete(request, id):
-    member = Member.objects.get(id=id)
-    # if request.method =="POST":
-    #     storage = KEY_MESSAGE(request)
-    #     for message in storage:
-    #         returnURL = message.message
-    #     storage.used = True
-    member.delete()
-    # messages.success(request, "successfully deleted")
-    return redirect('/crud/')
+    res = messagebox.askokcancel('Confirmation', 'Do you want to delete the record?.....')
+    if res == True:
+        member = Member.objects.get(id=id)
+        member.delete()
+        return redirect('/crud/')
+    elif res == False:
+        return redirect('/crud/')
+    else:
+        messagebox.showerror('error', 'something went wrong!')
+
+
+     
+    
