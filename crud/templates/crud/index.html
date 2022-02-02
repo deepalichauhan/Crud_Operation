@@ -1,23 +1,22 @@
 {% extends 'crud/base.html' %}
 {% block body %}
 
+{% comment %} Delete buttom href {% endcomment %}
 {% block content %}
-
     <script> 
       function showAlert(e) {
             var confirmAction = confirm ("Are you sure you want to delete?");
             if(confirmAction==true){
                 window.location = '/crud/delete/'+e;
+                }
             }
-      }
     </script>
 {% endblock %}
 
 
 <form class="form-inline"  action="create" method="POST">
     {% csrf_token %}
-    {% comment %} <div class="form-group"> {% endcomment %}
-      {% comment %} firstname {% endcomment %}
+    
       <div class="row">
           <div class="col-sm-1"><label for="firstname">Firstname</label></div>
           <div class="col-sm-3"><input type="text" name="firstname" class="form-control" required="required"/></div>
@@ -29,7 +28,8 @@
       <div class="row text-center"> <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> ADD</button>
       </div>
         
-    {% comment %} </div> {% endcomment %}
+   
+{% comment %} Edit & Delete button Action Perform {% endcomment %}
 </form>
 <br />
 <table class="table table-bordered">
@@ -49,16 +49,15 @@
             <td>{{ member.lastname }}</td>
             <td>{{member.address}}</td>
           
-            {% comment %} <form method="POST" onsubmit="return confirm("Are you sure you want to delete the record..!")"> {% endcomment %}
-                <td><center> <a class="btn btn-sm btn-danger"  onClick="showAlert({{ member.id }})" href="javascript:void(0)">
-                    <span class="glyphicon glyphicon-trash"></span>Delete</a></center></td>
+            {% comment %} Delete buttom {% endcomment %}
+            <td><center> <a class="btn btn-sm btn-danger"  onClick="showAlert({{ member.id }})" href="javascript:void(0)">
+            <span class="glyphicon glyphicon-trash"></span>Delete</a></center></td>
                     
-                        {% comment %} <script type="text/javascript" src="xxx.js">
-                        </script>
-                      
-                {% comment %} Edit buttom  {% endcomment %}
+                       
+            {% comment %} Edit buttom  {% endcomment %}
             <td><center> <a class="btn btn-sm btn-warning" href="edit/{{ member.id }}">
-                        <span class="glyphicon glyphicon-edit"></span>Edit</a></center></td>
+            <span class="glyphicon glyphicon-edit"></span>Edit</a></center></td>
+
         </tr>
         {% endfor %}
     </tbody>
