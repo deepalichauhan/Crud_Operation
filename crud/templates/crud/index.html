@@ -1,5 +1,19 @@
 {% extends 'crud/base.html' %}
 {% block body %}
+
+{% block content %}
+
+    <script> 
+      function showAlert(e) {
+            var confirmAction = confirm ("Are you sure you want to delete?");
+            if(confirmAction==true){
+                window.location = '/crud/delete/'+e;
+            }
+      }
+    </script>
+{% endblock %}
+
+
 <form class="form-inline"  action="create" method="POST">
     {% csrf_token %}
     {% comment %} <div class="form-group"> {% endcomment %}
@@ -34,11 +48,14 @@
             <td>{{ member.firstname }}</td>
             <td>{{ member.lastname }}</td>
             <td>{{member.address}}</td>
+          
             {% comment %} <form method="POST" onsubmit="return confirm("Are you sure you want to delete the record..!")"> {% endcomment %}
-            <td><center> <a class="btn btn-sm btn-danger" 
-                 href="delete/{{ member.id }}">
+                <td><center> <a class="btn btn-sm btn-danger"  onClick="showAlert({{ member.id }})" href="javascript:void(0)">
                     <span class="glyphicon glyphicon-trash"></span>Delete</a></center></td>
-                
+                    
+                        {% comment %} <script type="text/javascript" src="xxx.js">
+                        </script>
+                      
                 {% comment %} Edit buttom  {% endcomment %}
             <td><center> <a class="btn btn-sm btn-warning" href="edit/{{ member.id }}">
                         <span class="glyphicon glyphicon-edit"></span>Edit</a></center></td>
@@ -47,3 +64,5 @@
     </tbody>
 </table>
 {% endblock %}
+
+
