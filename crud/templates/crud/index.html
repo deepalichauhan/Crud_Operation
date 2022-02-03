@@ -5,7 +5,7 @@
 {% block content %}
     <script> 
       function showAlert(e) {
-            var confirmAction = confirm ("Are you sure you want to delete?");
+            var confirmAction = confirm ("Are you sure you want to delete the record?");
             if(confirmAction==true){
                 window.location = '/crud/delete/'+e;
                 }

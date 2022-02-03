@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'skdata',
+        'NAME': 'crud_operation',
         'USER': 'sk',
         'PASSWORD': 'sk@123',
         'HOST': 'localhost',
