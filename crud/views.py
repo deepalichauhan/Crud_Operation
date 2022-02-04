@@ -1,16 +1,13 @@
 
 # from curses import get_message
 # from crypt import methods
-from curses import KEY_MESSAGE
-from multiprocessing import context
+
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from httpx import request
 from .models import Member
-from django.contrib import messages
-from tkinter import *
-from tkinter import messagebox
-import time
+# from django.contrib import messages
+# import time
 # from .models import deletemodel
 
 # Create your views here.
